@@ -1,3 +1,4 @@
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -25,21 +26,20 @@ public class ContainerisedGoogleTest {
 
     private static WebDriver driver;
 
-//    @BeforeAll
-//    static void beforeAll() {
-//        driver = chrome.getWebDriver();
-//    }
+    @BeforeAll
+    static void beforeAll() {
+        driver = chrome.getWebDriver();
+    }
 
-//    @Test
-//    void should_docker_host_be_set_to_colima() {
-//        String actualDockerHost = System.getenv("DOCKER_HOST");
-//        String expectDockerHost = String.format("unix:%s/.colima/docker.sock", System.getenv("HOME"));
-//        assertThat("DOCKER_HOST should be set to colima", actualDockerHost, is(expectDockerHost));
-//    }
+    @AfterAll
+    static void afterAll() {
+        driver.close();
+    }
 
     @Test
-    public void should_title_contains_thoughtworks_when_open_thoughtworks_com() {
-        driver = chrome.getWebDriver();
-        assertThat(1, is(1));
+    public void should_title_be_correct_when_open_thoughtworks_com() {
+        driver.get("https://www.thoughtworks.com");
+        String websiteTitle = driver.getTitle();
+        assertThat(websiteTitle, is("Thoughtworks: A global technology consultancy  | Thoughtworks"));
     }
 }
