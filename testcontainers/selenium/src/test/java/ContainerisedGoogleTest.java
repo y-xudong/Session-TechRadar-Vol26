@@ -40,6 +40,6 @@ public class ContainerisedGoogleTest {
     public void should_title_be_correct_when_open_thoughtworks_com() {
         driver.get("https://www.thoughtworks.com");
         String websiteTitle = driver.getTitle();
-        assertThat(websiteTitle, is("Thoughtworks: A global technology consultancy  | Thoughtworks"));
+        assertThat(websiteTitle, is("Thoughtworks: A global technology consultancy | Thoughtworks"));
     }
 }
