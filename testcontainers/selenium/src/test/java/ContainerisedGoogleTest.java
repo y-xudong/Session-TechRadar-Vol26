@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testcontainers.containers.BrowserWebDriverContainer;
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.VncRecordingContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -17,9 +19,9 @@ import static org.testcontainers.containers.BrowserWebDriverContainer.VncRecordi
 public class ContainerisedGoogleTest {
 
     @Container
-    private final static BrowserWebDriverContainer<?> chrome = new BrowserWebDriverContainer<>()
+    private final static BrowserWebDriverContainer<?> chrome = new BrowserWebDriverContainer<>("seleniarm/standalone-chromium:4.1.3-20220412")
             .withCapabilities(new ChromeOptions())
-            .withRecordingMode(RECORD_ALL, new File("/Users/xudong.yang/Session-TechRadar-Vol26/testcontainers/selenium/build"));
+            .withRecordingMode(RECORD_ALL, new File("build"), VncRecordingContainer.VncRecordingFormat.MP4);
 
     private static WebDriver driver;
 
