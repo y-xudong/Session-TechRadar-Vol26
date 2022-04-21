@@ -19,7 +19,7 @@ import static org.testcontainers.containers.BrowserWebDriverContainer.VncRecordi
 public class ContainerisedGoogleTest {
 
     @Container
-    private final static BrowserWebDriverContainer<?> chrome = new BrowserWebDriverContainer<>("seleniarm/standalone-chromium:4.1.3-20220412")
+    private final static BrowserWebDriverContainer<?> chrome = new BrowserWebDriverContainer<>()
             .withCapabilities(new ChromeOptions())
             .withRecordingMode(RECORD_ALL, new File("build"), VncRecordingContainer.VncRecordingFormat.MP4);
 
